@@ -1,0 +1,7 @@
+.env
+__pycache__/*
+*.pyc
+data/*
+!data/ontologies/
+!data/ontologies/catalog.json
+*.egg-info/*
