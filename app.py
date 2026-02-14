@@ -264,5 +264,5 @@ def compose(
 
 
 
-app.mount("/", mcp_app.sse_app())
+app.mount("/", mcp_app)
 _log.info("MCP SSE endpoint mounted at /mcp")
