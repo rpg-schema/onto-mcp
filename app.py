@@ -209,46 +209,46 @@ def compose(
 
 # ── Register / add ontology ─────────────────────────────────────────
 
-@app.post("/ontologies")
-def add_ontology(
-    body: Dict[str, Any] = Body(
-        ...,
-        examples=[{
-            "slug": "foaf",
-            "ttl_content": "@prefix ...",
-            "label": "FOAF",
-            "description": "Friend of a Friend",
-            "tags": ["social"],
-        }],
-    ),
-):
-    """Register a new baseline ontology by providing its TTL content."""
-    slug = body.get("slug", "").strip()
-    ttl_content = body.get("ttl_content", "").strip()
-    if not slug or not ttl_content:
-        raise HTTPException(status_code=422, detail="slug and ttl_content are required.")
+# @app.post("/ontologies")
+# def add_ontology(
+    # body: Dict[str, Any] = Body(
+        # ...,
+        # examples=[{
+            # "slug": "foaf",
+            # "ttl_content": "@prefix ...",
+            # "label": "FOAF",
+            # "description": "Friend of a Friend",
+            # "tags": ["social"],
+        # }],
+    # ),
+# ):
+    # """Register a new baseline ontology by providing its TTL content."""
+    # slug = body.get("slug", "").strip()
+    # ttl_content = body.get("ttl_content", "").strip()
+    # if not slug or not ttl_content:
+        # raise HTTPException(status_code=422, detail="slug and ttl_content are required.")
 
-    _log.debug("POST /ontologies slug=%s", slug)
+    # _log.debug("POST /ontologies slug=%s", slug)
 
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".ttl", delete=False, encoding="utf-8"
-    ) as f:
-        f.write(ttl_content)
-        tmp_path = f.name
+    # with tempfile.NamedTemporaryFile(
+        # mode="w", suffix=".ttl", delete=False, encoding="utf-8"
+    # ) as f:
+        # f.write(ttl_content)
+        # tmp_path = f.name
 
-    try:
-        entry = register_ontology(
-            catalog_dir=CATALOG_DIR,
-            slug=slug,
-            ttl_path=tmp_path,
-            label=body.get("label", ""),
-            description=body.get("description", ""),
-            tags=body.get("tags", []),
-        )
-    finally:
-        Path(tmp_path).unlink(missing_ok=True)
+    # try:
+        # entry = register_ontology(
+            # catalog_dir=CATALOG_DIR,
+            # slug=slug,
+            # ttl_path=tmp_path,
+            # label=body.get("label", ""),
+            # description=body.get("description", ""),
+            # tags=body.get("tags", []),
+        # )
+    # finally:
+        # Path(tmp_path).unlink(missing_ok=True)
 
-    return {"registered": True, "entry": entry}
+    # return {"registered": True, "entry": entry}
 
 
 # ── MCP SSE mount (for MCP-compatible agents) ───────────────────────
