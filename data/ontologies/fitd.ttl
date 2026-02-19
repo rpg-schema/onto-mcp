@@ -1,5 +1,5 @@
 @prefix fitd:   <https://fitd.rpg-schema.org/ontology#> .
-@prefix rpg:    <http://www.rpg-schema.org/1.0/> .
+@prefix rpg:     <http://www.rpg-schema.org/1.0/> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -12,8 +12,7 @@
 # ONTOLOGY HEADER
 # ================================================================
 
-<https://fitd.rpg-schema.org/ontology>
-    a owl:Ontology ;
+fitd: a owl:Ontology ;
     dc:title "Forged in the Dark — General Rules Ontology (rpg-schema aligned)" ;
     dc:description """OWL ontology for the Forged in the Dark SRD, grounded in rpg-schema.org/rpg.
     FITD-native classes use owl:equivalentClass to align with rpg: counterparts.
@@ -21,8 +20,8 @@
     are expressed in the fitd: namespace with rpg: properties and LLMArtifact annotations.
     The 12 actions and 3 attributes are modelled as rpg:RuleSetAttribute individuals.""" ;
     dc:source "Forged in the Dark SRD — John Harper, Evil Hat Productions" ;
-    owl:imports <http://www.rpg-schema.org/1.0/> ;
-    owl:versionInfo "1.0.0" .
+    owl:imports <https://fitd.rpg-schema.org/ontology> ;
+    owl:versionInfo "2.0.0" .
 
 # ================================================================
 # RULESET ROOT
